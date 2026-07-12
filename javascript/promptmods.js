@@ -18,7 +18,7 @@
         return true;
     }
     function apply() {
-        document.querySelectorAll(".prompt-mods-default-enabled").forEach(function (node) {
+        document.querySelectorAll(".promptmods-default-enabled").forEach(function (node) {
             let tries = 0;
             const timer = setInterval(function () {
                 if (setChecked(node.dataset.accordionId, node.dataset.enabled === "true") || ++tries > 60) clearInterval(timer);
