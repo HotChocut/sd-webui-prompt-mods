@@ -3,17 +3,17 @@ import gradio as gr
 from modules import script_callbacks, scripts, shared
 from modules.ui_components import InputAccordion
 
-TITLE = "Prompt Mods"
+TITLE = "PromptMods"
 SECTION = ("promptmods", TITLE)
 INFO = (
-    ("enabled", False, "prompt_mods_default_enabled", "Prompt Mods enabled"),
-    ("pos_before", "", "prompt_mods_default_positive_before", "Prompt Mods positive before"),
-    ("pos_after", "", "prompt_mods_default_positive_after", "Prompt Mods positive after"),
-    ("neg_before", "", "prompt_mods_default_negative_before", "Prompt Mods negative before"),
-    ("neg_after", "", "prompt_mods_default_negative_after", "Prompt Mods negative after"),
-    ("use_pos", True, "prompt_mods_default_apply_positive", "Prompt Mods use positive"),
-    ("use_neg", True, "prompt_mods_default_apply_negative", "Prompt Mods use negative"),
-    ("strip", True, "prompt_mods_strip_infotext_imports", None),
+    ("enabled", False, "promptmods_default_enabled", "PromptMods enabled"),
+    ("pos_before", "", "promptmods_default_positive_before", "PromptMods positive before"),
+    ("pos_after", "", "promptmods_default_positive_after", "PromptMods positive after"),
+    ("neg_before", "", "promptmods_default_negative_before", "PromptMods negative before"),
+    ("neg_after", "", "promptmods_default_negative_after", "PromptMods negative after"),
+    ("use_pos", True, "promptmods_default_apply_positive", "PromptMods use positive"),
+    ("use_neg", True, "promptmods_default_apply_negative", "PromptMods use negative"),
+    ("strip", True, "promptmods_strip_infotext_imports", None),
 )
 FIELDS = tuple(x[0] for x in INFO[:7])
 DEFAULTS = {k: v for k, v, _, _ in INFO}
@@ -32,7 +32,7 @@ SETTINGS = (
     ("neg_after", "Default text after negative prompt", gr.Textbox, {"lines": 2}, True),
     ("use_pos", "Change positive prompt by default", None, None, True),
     ("use_neg", "Change negative prompt by default", None, None, True),
-    ("strip", "Remove Prompt Mods text on PNG Info / Image Browser import", None, None, False),
+    ("strip", "Remove PromptMods text on PNG Info / Image Browser import", None, None, False),
 )
 TRUE = {"1", "true", "yes", "on", "enabled", "enable"}
 FALSE = {"0", "false", "no", "off", "disabled", "disable", "none", ""}
@@ -40,11 +40,11 @@ START_SEP_RE = re.compile(r"^(?:\s+|[,;:.]\s*)+")
 END_SEP_RE = re.compile(r"(?:\s+|[,;:.]\s*)+$")
 PARAM_RE = re.compile(r'\s*(\w[\w \-/]+):\s*("(?:\\.|[^\\"])+"|[^,]*)(?:,|$)')
 VAR_RE = re.compile(r"\{([^{}]*\|[^{}]*)\}")
-RAW_PATCHED = "__prompt_mods_raw_patched__"
-ORIGINAL_SETUP = "__prompt_mods_original_setup__"
-STATE_ATTR = "_prompt_mods_state"
-APPLIED_ATTR = "_prompt_mods_applied"
-STRIPPED = "__prompt_mods_stripped__"
+RAW_PATCHED = "__promptmods_raw_patched__"
+ORIGINAL_SETUP = "__promptmods_original_setup__"
+STATE_ATTR = "_promptmods_state"
+APPLIED_ATTR = "_promptmods_applied"
+STRIPPED = "__promptmods_stripped__"
 
 def clean(value):
     return str(value or "").strip()
