@@ -277,7 +277,7 @@ class Script(scripts.Script):
         accordion_id = self.elem_id("accordion")
         with gr.Group(elem_id=self.elem_id("group")) as group:
             with InputAccordion(False, label=TITLE, elem_id=accordion_id) as enabled:
-                marker = gr.HTML(f'<div class="prompt-mods-default-enabled" data-accordion-id="{html.escape(accordion_id, quote=True)}" data-enabled="{str(opt("enabled")).lower()}" style="display:none"></div>', elem_id=self.elem_id("default_enabled_marker"))
+                marker = gr.HTML(f'<div class="promptmods-default-enabled" data-accordion-id="{html.escape(accordion_id, quote=True)}" data-enabled="{str(opt("enabled")).lower()}" style="display:none"></div>', elem_id=self.elem_id("default_enabled_marker"))
                 with gr.Accordion("Text added before prompt", open=False, elem_id=self.elem_id("before_group")) as before_group:
                     pos_before = gr.Textbox(label="Positive prompt", lines=2, value=opt("pos_before"), placeholder="Example: masterpiece, best quality", elem_id=self.elem_id("positive_before"))
                     neg_before = gr.Textbox(label="Negative prompt", lines=2, value=opt("neg_before"), placeholder="Example: worst quality, low quality", elem_id=self.elem_id("negative_before"))
